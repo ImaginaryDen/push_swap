@@ -11,7 +11,6 @@ typedef struct	s_stack
 {
 	int				item;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }				t_stack;
 
 void		ft_lstadd_back(t_stack **lst, t_stack *new);

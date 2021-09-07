@@ -5,11 +5,8 @@ void p(t_stack **out, t_stack **in)
 	t_stack *temp;
 
 	temp = *out;
-	if (temp->prev)
-		temp->prev->next = temp->next;
-	if (temp->next)
-		temp->next->prev = temp->prev;
 	*out = temp->next;
+	temp->next = NULL;
 	ft_lstadd_front(in, temp);
 }
 

@@ -2,16 +2,14 @@
 
 void s(t_stack **stack)
 {
-	t_stack *stack_prev;
+	t_stack *stack_next;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	stack_prev = (*stack)->next;
-	(*stack)->next = stack_prev->next;
-	stack_prev->prev = (*stack)->prev;
-	(*stack)->prev = stack_prev;
-	stack_prev->next = (*stack); 
-	*stack = stack_prev;
+	stack_next = (*stack)->next;
+	(*stack)->next = stack_next->next;
+	stack_next->next = (*stack); 
+	*stack = stack_next;
 }
 
 void sa(t_stack **a, t_stack **b)
