@@ -1,30 +1,37 @@
-NAME	=	push_swap
-HEADER	=	push_swap.h
-OBG		=	${SRC:.c=.o}
-SRC_UTL =	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c  ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
-			ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_isdigit.c ft_atoi.c print_comand.c
-SRC_COM = 	s.c p.c
+NAME	=   push_swap
+HEADER  =   push_swap.h
 
-SRC		=	$(addprefix ./utils/, ${SRC_UTL}) $(addprefix ./comand/, ${SRC_COM})  main.c
+SRC_UTL = $(shell ls ./utils/*.c) 
 
-BONUS_OBJ = ${BONUS_SRC:.c=.o}
-FLAGS	= -Wall -Wextra -Werror
-RM = rm -rf
+SRC_COM	=   $(shell ls ./comand/*.c) 
 
+SRCS		=  $(SRC_UTL)  $(SRC_COM) main.c
 
+CFLAGS	= -Wall -Wextra -Werror
 
-.c.o:
-			gcc ${FLAGS} -I./ -c $< -o ${<:.c=.o}
+RM		= rm -rf
 
-all:		${OBG} 
-			gcc ${FLAGS} -o push_swap  -I./ $(OBG)
+CC		=   gcc
+
+OBG		=	$(SRCS:%.c=%.o)
+
+all:		$(NAME)
+
+$(NAME):	${OBG} $(HEADER)
+			$(CC) -o $(NAME) ${OBG}
+
+%.o: 		%.c	
+			$(CC) $(CFLAGS) -I./ -c $< -o $@
+ 
 clean:
-			rm -rf ${OBG} ${BONUS_OBJ}
-fclean: 	clean
-			rm -rf ${NAME}
+			$(RM) ${OBG}
+
+fclean:		clean
+			$(RM) $(NAME)
 
 re:			fclean all
 
-$(NAME):	all
-		
-.PHONY: all clean fclean re ${NAME}
+test:		
+			make -s && make -s  clean && ./$(NAME) 1 2 3 4 
+
+.PHONY: clean fclean re all

@@ -44,8 +44,7 @@ int main(int argc, char **argv)
 			ft_lstadd_front(&a, ft_lstnew(ft_atoi(argv[argc])));
 	if (TYPE_OUTPUT == 2)
 		print_comand("Init a and b:\n", a, b);
-	sa(&a, &b);
-	pa(&a, &b);
-	pb(&a, &b);
+	pa(&a,&b);
+	rra(&a, &b);
 	return(0);
 }
