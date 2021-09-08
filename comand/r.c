@@ -29,14 +29,12 @@ void	ra(t_stack **a, t_stack **b)
 {
 	r(a);
 	(void)b;
-	print_comand("ra", *a, *b);
 }
 
 void	rb(t_stack **a, t_stack **b)
 {
 	r(b);
 	(void)a;
-	print_comand("rb", *a, *b);
 }
 
 void	rr(t_stack **a, t_stack **b)
@@ -44,19 +42,22 @@ void	rr(t_stack **a, t_stack **b)
 	r(a);
 	r(b);
 	(void)a;
-	print_comand("rr", *a, *b);
 }
 
 void	rra(t_stack **a, t_stack **b)
 {
 	rev_r(a);
 	(void)b;
-	print_comand("rra", *a, *b);
 }
 
 void	rrb(t_stack **a, t_stack **b)
 {
 	rev_r(b);
 	(void)a;
-	print_comand("rrb", *a, *b);
+}
+
+void	rrr(t_stack **a, t_stack **b)
+{
+	rev_r(a);
+	rev_r(b);
 }

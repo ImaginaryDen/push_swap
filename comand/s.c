@@ -16,19 +16,16 @@ void sa(t_stack **a, t_stack **b)
 {
 	(void)b;
 	s(a);
-	print_comand("sa", *a, *b);
 }
 
 void sb(t_stack **a, t_stack **b)
 {
 	(void)a;
 	s(b);
-	print_comand("sb", *a, *b);
 }
 
 void ss(t_stack **a, t_stack **b)
 {
 	s(a);
 	s(b);
-	print_comand("ss", *a, *b);
 }
