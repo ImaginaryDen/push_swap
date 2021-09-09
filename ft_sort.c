@@ -9,39 +9,14 @@ void swap(int *a, int *b)
 	*b = temp;
 }
 
-void swap_link(int **a, int **b)
+void ft_sortch(int *arr, int **link, int size)
 {
-	int *temp;
+	int i;
+	int j;
+	int	min;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-void ft_sort(t_stack **stack)
-{
-	int		size;
-	int		i;
-	int		j;
-	int		min;
-	int 	*arr;
-	int		**link;
-	t_stack *temp;
-
-	size = ft_lstsize(*stack);
-	arr = malloc(sizeof(int) * size);
-	link = malloc(sizeof(int *) * size);
-	temp = *stack;
 	i = 0;
-	while (temp)
-	{
-		arr[i] = temp->item;
-		link[i] = &(temp->num);
-		temp = temp->next;
-		i++;
-	}
-	i = 0;
-	while(i + 1 < size)
+	while(i < size - 1)
 	{
 		min = i;
 		j = i + 1;
@@ -52,13 +27,32 @@ void ft_sort(t_stack **stack)
 			j++;
 		}
 		swap(&arr[i], &arr[min]);
-		swap_link(&link[i], &link[min]);
+		swap((int *)&link[i], (int *)&link[min]);
 		i++;
 	}
+}
+
+void ft_sort(t_stack *stack)
+{
+	int		size;
+	int		i;
+	int 	*arr;
+	int		**link;
+
+	size = ft_lstsize(stack);
+	arr = malloc(sizeof(int) * size);
+	link = malloc(sizeof(int *) * size);
 	i = 0;
-	while(i < size)
+	while (stack)
 	{
-		*(link[i]) = i;
+		arr[i] = stack->item;
+		link[i] = &(stack->order);
+		stack = stack->next;
 		i++;
 	}
+	ft_sortch(arr, link, size);
+	while(i--)
+		*(link[i]) = i;
+	free(link);
+	free(arr);
 }

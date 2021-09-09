@@ -32,6 +32,6 @@ fclean:		clean
 re:			fclean all
 
 test:		
-			make -s && make -s  clean && ./$(NAME) 1 2 3 4 
+			make -s && make -s  clean
 
 .PHONY: clean fclean re all

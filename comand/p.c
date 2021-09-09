@@ -4,6 +4,8 @@ void	p(t_stack **out, t_stack **in)
 {
 	t_stack	*temp;
 
+	if (*out == NULL)
+		return ;
 	temp = *out;
 	*out = temp->next;
 	temp->next = NULL;
@@ -12,10 +14,10 @@ void	p(t_stack **out, t_stack **in)
 
 void	pa(t_stack **a, t_stack **b)
 {
-	p(a, b);
+	p(b, a);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	p(b, a);
+	p(a, b);
 }

@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+t_stack *ft_copy_list(t_stack *stack)
+{
+	t_stack *copy_stack;
+
+	copy_stack = NULL;
+	while (stack)
+	{
+		ft_lstadd_back(&copy_stack, ft_lstnew(stack->item));
+		stack = stack->next;
+	}
+	return copy_stack;
+}
+
 int exit_error(t_stack **a)
 {
 	ft_lstclear(a);
@@ -31,21 +44,22 @@ int check_arg(char *arg, t_stack *a, int *num)
 int main(int argc, char **argv)
 {
 	int		num;
-	t_stack *a;
-	t_stack *b;
+	t_stack *stack;
+	t_stack *copy_stack;
 	t_stack *comands;
 
-	a = NULL;
-	b = NULL;
+	stack = NULL;
 	comands = NULL;
 	if (argc < 2)
-		return (exit_error(&a));
+		return (exit_error(&stack));
 	while (--argc)
-		if(!check_arg(argv[argc], a, &num))
-			return (exit_error(&a));
+		if(!check_arg(argv[argc], stack, &num))
+			return (exit_error(&stack));
 		else
-			ft_lstadd_front(&a, ft_lstnew(num));
-	ft_sort(&a);
-	ft_putnbr_fd(a->num, 1);
+			ft_lstadd_front(&stack, ft_lstnew(num));
+	copy_stack = ft_copy_list(stack);
+	ft_sort(stack);
+	ft_sort_stack(&stack, &comands);
+	ft_check(copy_stack, comands);
 	return(0);
 }

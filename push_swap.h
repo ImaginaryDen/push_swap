@@ -25,9 +25,16 @@ enum e_game_rules
 typedef struct s_stack
 {
 	int				item;
-	int				num;
+	int				order;
 	struct s_stack	*next;
 }				t_stack;
+
+typedef struct s_for_sort
+{
+	int	mid;
+	int	max;
+	int	next;
+}				t_for_sort;
 
 void		ft_lstadd_back(t_stack	**lst, t_stack	*new);
 void		ft_lstadd_front(t_stack	**lst, t_stack	*new);
@@ -56,7 +63,8 @@ void		rrb(t_stack **a, t_stack **b);
 void		rrr(t_stack **a, t_stack **b);
 void		ft_print_stack(t_stack *a, t_stack *b);
 size_t		ft_strlen(const char *s);
-int			ft_check(t_stack **a, t_stack *com);
-void		ft_sort(t_stack **stack);
+int			ft_check(t_stack *a, t_stack *com);
+void		ft_sort(t_stack *stack);
+void		ft_sort_stack(t_stack **a, t_stack **comands);
 
 #endif
