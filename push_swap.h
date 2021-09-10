@@ -5,8 +5,6 @@
 # include <limits.h>
 # include <unistd.h>
 
-# define TYPE_OUTPUT 2
-
 enum e_game_rules
 {
 	SA,
@@ -26,6 +24,7 @@ typedef struct s_stack
 {
 	int				item;
 	int				order;
+	int				flag;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -34,6 +33,7 @@ typedef struct s_for_sort
 	int	mid;
 	int	max;
 	int	next;
+	int	flag;
 	t_stack **a;
 	t_stack *b;
 	t_stack **command;

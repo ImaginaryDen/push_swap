@@ -15,12 +15,12 @@ void print_info(t_for_sort info)
 
 int less(int a, int b)
 {
-	return (a < b);
+	return (a <= b);
 }
 
 int larger(int a, int b)
 {
-	return (a > b);
+	return (a >= b);
 }
 
 int		if_there_is(t_stack *stack,  int mid, int (*compare)(int, int))
@@ -34,57 +34,40 @@ int		if_there_is(t_stack *stack,  int mid, int (*compare)(int, int))
 	return (0);
 }
 
-void	div_stack(t_for_sort *sort_info, t_stack **out, t_stack **in, int (*compare)(int, int))
+void	div_stack(t_for_sort *sort_info, t_stack **out, int (*compare)(int, int))
 {
 	while(if_there_is(*out, sort_info->mid, compare))
 	{
+		if (sort_info->b != NULL && sort_info->b->order == sort_info->next)
+		{
+			pa(sort_info->a, &sort_info->b);
+			ft_lstadd_back(sort_info->command, ft_lstnew(PA));
+			ra(sort_info->a, &sort_info->b);
+			ft_lstadd_back(sort_info->command, ft_lstnew(RA));
+			sort_info->next++;
+			continue;
+		}
 		while (!compare((*out)->order, sort_info->mid))
 		{
 			if (out == sort_info->a)
 			{
-			ft_putchar_fd('1',1);
-				ra(out, in);
+				ra(sort_info->a, &sort_info->b);
 				ft_lstadd_back(sort_info->command, ft_lstnew(RA));
 				continue;
 			}
-			rb(out, in);
+			rb(sort_info->a, &sort_info->b);
 			ft_lstadd_back(sort_info->command, ft_lstnew(RB));
 		}
 		if (out == sort_info->a)
 		{
-			pb(out, in);
+			pb(sort_info->a, &sort_info->b);
 			ft_lstadd_back(sort_info->command, ft_lstnew(PB));
 			continue;
 		}
-		pa(out, in);
+		sort_info->b->flag = sort_info->flag;
+		pa(sort_info->a, &sort_info->b);
 		ft_lstadd_back(sort_info->command, ft_lstnew(PA));
 	}
-}
-
-void	mid_app(t_for_sort *sort_info,	t_stack **command)
-{
-	int order_mid;
-	t_stack *temp;
-
-	temp = sort_info->b;
-	order_mid = 0;
-	while (temp->order != sort_info->mid)
-	{
-		temp = temp->next;
-		order_mid++;
-	}
-	if (order_mid < ft_lstsize(sort_info->b) / 2)
-		while ((sort_info->b)->order != sort_info->mid)
-		{
-			rb(NULL, &(sort_info->b));
-			ft_lstadd_back(command, ft_lstnew(RB));
-		}
-	else
-		while ((sort_info->b)->order != sort_info->mid)
-		{
-			rrb(NULL, &(sort_info->b));
-			ft_lstadd_back(command, ft_lstnew(RRB));
-		}	
 }
 
 void	ft_sort_stack(t_stack **a, t_stack **comands)
@@ -97,9 +80,11 @@ void	ft_sort_stack(t_stack **a, t_stack **comands)
 	sort_info.a = a;
 	sort_info.b = NULL;
 	sort_info.command = comands;
+	sort_info.flag = sort_info.next;
 	print_info(sort_info);
-	div_stack(&sort_info, sort_info.a, &sort_info.b, less);
-	return ;
-	mid_app(&sort_info, comands);
+	div_stack(&sort_info, sort_info.a, less);
+	sort_info.max = sort_info.mid;
 	sort_info.mid = sort_info.max / 2 + sort_info.next;
+	print_info(sort_info);
+	div_stack(&sort_info, &sort_info.b, larger);
 }

@@ -28,6 +28,7 @@ void ft_sort_choice(int *arr, int **link, int size)
 		}
 		swap(&arr[i], &arr[min]);
 		swap((int *)&link[i], (int *)&link[min]);
+		*link[i] = i + 1;
 		i++;
 	}
 }
@@ -51,8 +52,11 @@ void ft_sort(t_stack *stack)
 		i++;
 	}
 	ft_sort_choice(arr, link, size);
-	while(i--)
-		*(link[i]) = i;
+	while(i)
+	{
+		*(link[i - 1]) = i;
+		i--;
+	}
 	free(link);
 	free(arr);
 }
