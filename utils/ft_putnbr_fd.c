@@ -1,14 +1,14 @@
 #include "push_swap.h"
 
-static int	pow(int num, int pow_n)
+static int	ft_pow(int num, int ft_pow_n)
 {
 	int	result;
 
 	result = 1;
-	while (pow_n)
+	while (ft_pow_n)
 	{
 		result *= num;
-		pow_n--;
+		ft_pow_n--;
 	}
 	return (result);
 }
@@ -38,8 +38,8 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('0', fd);
 	while (size)
 	{
-		ft_putchar_fd(ft_abs(n / pow(10, size - 1)) + '0', fd);
-		n %= pow(10, size - 1);
+		ft_putchar_fd(ft_abs(n / ft_pow(10, size - 1)) + '0', fd);
+		n %= ft_pow(10, size - 1);
 		size--;
 	}
 }
