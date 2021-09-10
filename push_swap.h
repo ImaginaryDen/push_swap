@@ -34,6 +34,9 @@ typedef struct s_for_sort
 	int	mid;
 	int	max;
 	int	next;
+	t_stack **a;
+	t_stack *b;
+	t_stack **command;
 }				t_for_sort;
 
 void		ft_lstadd_back(t_stack	**lst, t_stack	*new);

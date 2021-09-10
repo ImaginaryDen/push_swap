@@ -9,7 +9,7 @@ void swap(int *a, int *b)
 	*b = temp;
 }
 
-void ft_sortch(int *arr, int **link, int size)
+void ft_sort_choice(int *arr, int **link, int size)
 {
 	int i;
 	int j;
@@ -50,7 +50,7 @@ void ft_sort(t_stack *stack)
 		stack = stack->next;
 		i++;
 	}
-	ft_sortch(arr, link, size);
+	ft_sort_choice(arr, link, size);
 	while(i--)
 		*(link[i]) = i;
 	free(link);
