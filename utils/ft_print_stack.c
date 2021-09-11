@@ -7,6 +7,8 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 		if (a)
 		{
 			ft_putnbr_fd(a->item, 1);
+			ft_putstr_fd("-",1);
+			ft_putnbr_fd(a->flag, 1);
 			a = a->next;
 		}
 		else
@@ -15,8 +17,11 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 		if (b)
 		{
 			ft_putnbr_fd(b->item, 1);
+			ft_putstr_fd("-",1);
+			ft_putnbr_fd(b->flag, 1);
 			b = b->next;
 		}
 		ft_putchar_fd('\n', 1);
 	}
+	ft_putstr_fd("--------\n", 1);
 }

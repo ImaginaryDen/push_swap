@@ -5,6 +5,8 @@
 # include <limits.h>
 # include <unistd.h>
 
+#define PRINT_ALL 0
+
 enum e_game_rules
 {
 	SA,
@@ -69,5 +71,6 @@ size_t		ft_strlen(const char *s);
 int			ft_check(t_stack *a, t_stack *com);
 void		ft_sort(t_stack *stack);
 void		ft_sort_stack(t_stack **a, t_stack **comands);
+void		ft_command_cheker(t_stack **command);
 
 #endif

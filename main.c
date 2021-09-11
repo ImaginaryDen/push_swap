@@ -60,6 +60,10 @@ int main(int argc, char **argv)
 	copy_stack = ft_copy_list(stack);
 	ft_sort(stack);
 	ft_sort_stack(&stack, &comands);
+	ft_lstclear(&stack);
+	ft_command_cheker(&comands);
 	ft_check(copy_stack, comands);
+	ft_lstclear(&copy_stack);
+	ft_lstclear(&comands);
 	return(0);
 }
