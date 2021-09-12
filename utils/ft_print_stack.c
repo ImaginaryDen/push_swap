@@ -13,7 +13,7 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 		}
 		else
 			ft_putchar_fd(' ', 1);
-		ft_putchar_fd('\t', 1);
+		ft_putstr_fd("\t\t", 1);
 		if (b)
 		{
 			ft_putnbr_fd(b->item, 1);

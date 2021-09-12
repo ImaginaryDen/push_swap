@@ -12,20 +12,23 @@ void s(t_stack **stack)
 	*stack = stack_next;
 }
 
-void sa(t_stack **a, t_stack **b)
+int	 sa(t_stack **a, t_stack **b)
 {
 	(void)b;
 	s(a);
+	return (SA);
 }
 
-void sb(t_stack **a, t_stack **b)
+int	 sb(t_stack **a, t_stack **b)
 {
 	(void)a;
 	s(b);
+	return (SB);
 }
 
-void ss(t_stack **a, t_stack **b)
+int	 ss(t_stack **a, t_stack **b)
 {
 	s(a);
 	s(b);
+	return (SS);
 }

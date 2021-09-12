@@ -32,6 +32,7 @@ typedef struct s_stack
 
 typedef struct s_for_sort
 {
+	int	size;
 	int	mid;
 	int	max;
 	int	next;
@@ -55,17 +56,17 @@ void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_isdigit(int c);
 int			ft_atoi(const char *str);
-void		sa(t_stack **a, t_stack **b);
-void		sb(t_stack **a, t_stack **b);
-void		ss(t_stack **a, t_stack **b);
-void		pa(t_stack **a, t_stack **b);
-void		pb(t_stack **a, t_stack **b);
-void		ra(t_stack **a, t_stack **b);
-void		rb(t_stack **a, t_stack **b);
-void		rr(t_stack **a, t_stack **b);
-void		rra(t_stack **a, t_stack **b);
-void		rrb(t_stack **a, t_stack **b);
-void		rrr(t_stack **a, t_stack **b);
+int			sa(t_stack **a, t_stack **b);
+int			sb(t_stack **a, t_stack **b);
+int			ss(t_stack **a, t_stack **b);
+int			pa(t_stack **a, t_stack **b);
+int			pb(t_stack **a, t_stack **b);
+int			ra(t_stack **a, t_stack **b);
+int			rb(t_stack **a, t_stack **b);
+int			rr(t_stack **a, t_stack **b);
+int			rra(t_stack **a, t_stack **b);
+int			rrb(t_stack **a, t_stack **b);
+int			rrr(t_stack **a, t_stack **b);
 void		ft_print_stack(t_stack *a, t_stack *b);
 size_t		ft_strlen(const char *s);
 int			ft_check(t_stack *a, t_stack *com);

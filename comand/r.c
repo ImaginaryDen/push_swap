@@ -25,39 +25,45 @@ void	rev_r(t_stack **stack)
 	temp->next = NULL;
 }
 
-void	ra(t_stack **a, t_stack **b)
+int		ra(t_stack **a, t_stack **b)
 {
 	r(a);
 	(void)b;
+	return (RA);
 }
 
-void	rb(t_stack **a, t_stack **b)
+int		rb(t_stack **a, t_stack **b)
 {
 	r(b);
 	(void)a;
+	return (RB);
 }
 
-void	rr(t_stack **a, t_stack **b)
+int		rr(t_stack **a, t_stack **b)
 {
 	r(a);
 	r(b);
 	(void)a;
+	return (RR);
 }
 
-void	rra(t_stack **a, t_stack **b)
+int		rra(t_stack **a, t_stack **b)
 {
 	rev_r(a);
 	(void)b;
+	return (RRA);
 }
 
-void	rrb(t_stack **a, t_stack **b)
+int		rrb(t_stack **a, t_stack **b)
 {
 	rev_r(b);
 	(void)a;
+	return (RRB);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+int		rrr(t_stack **a, t_stack **b)
 {
 	rev_r(a);
 	rev_r(b);
+	return (RRR);
 }

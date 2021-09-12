@@ -7,7 +7,7 @@ int ft_check(t_stack *a, t_stack *com)
 	int			flag_ok;
 	const char	name[12][4] = {"sa", "sb", "ss", "pa", "pb",
 		"ra", "rb", "rr", "rra", "rrb", "rrr"};
-	void		(*const all_funcs[11])(t_stack	**,	t_stack	**) =
+	int			(*const all_funcs[11])(t_stack	**,	t_stack	**) =
 		{sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 
 	size = ft_lstsize(com);
@@ -19,7 +19,7 @@ int ft_check(t_stack *a, t_stack *com)
 		all_funcs[com->item](&a, &b);
 		if (PRINT_ALL)
 		{
-			ft_putstr_fd("a\tb\n", 1);
+			ft_putstr_fd("a\t\tb\n", 1);
 			ft_putstr_fd((char *)name[com->item], 1);
 			ft_putchar_fd('\n', 1);
 			ft_print_stack(a, b);
@@ -32,13 +32,16 @@ int ft_check(t_stack *a, t_stack *com)
 	flag_ok = 1;
 	while (a->next)
 	{
-		if (a->order < a->next->order)
+		if (a->item > a->next->item)
+		{
 			flag_ok = 0;
+			break;
+		}
 		a = a->next;
 	}
 	if (flag_ok)
-		ft_putstr_fd("OK", 1);
+		ft_putstr_fd("OK\n", 1);
 	else
-		ft_putstr_fd("KO", 1);
+		ft_putstr_fd("KO\n", 1);
 	return (0);
 }
