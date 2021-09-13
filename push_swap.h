@@ -5,7 +5,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-#define PRINT_ALL 1
+#define PRINT_ALL 0
 
 enum e_game_rules
 {
@@ -30,7 +30,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-typedef struct s_for_sort
+typedef struct s_sort_info
 {
 	int	size;
 	int	mid;
@@ -40,7 +40,7 @@ typedef struct s_for_sort
 	t_stack **a;
 	t_stack *b;
 	t_stack **command;
-}				t_for_sort;
+}				t_sort_info;
 
 void		ft_lstadd_back(t_stack	**lst, t_stack	*new);
 void		ft_lstadd_front(t_stack	**lst, t_stack	*new);
@@ -75,13 +75,14 @@ void		ft_sort_stack(t_stack **a, t_stack **comands);
 void		ft_command_cheker(t_stack *commands);
 int			check_first(t_stack *stack, int next);
 int			check_second(t_stack *stack, int next);
-int			check_last(t_for_sort	*sort_info);
-int			check_two_first(t_for_sort *sort_info);
-int			check_next(t_for_sort *info);
+int			check_last(t_sort_info	*sort_info);
+int			check_two_first(t_sort_info *sort_info);
+int			check_next(t_sort_info *info);
 int			less(t_stack *a, int b);
 int			larger(t_stack *a, int b);
-void		div_stack(t_for_sort *s_i, t_stack **out, int (*compare)(t_stack *, int));
-void		rev_stack(t_for_sort *info, int order);
+void		div_stack(t_sort_info *s_i, t_stack **out, int (*compare)(t_stack *, int));
+void		rev_stack(t_sort_info *info, int order);
 int			ft_is_sort(t_stack *a);
+void		mini_sort(t_stack **a,  t_stack **commands);
 
 #endif

@@ -5,7 +5,7 @@ SRC_UTL = $(shell ls ./utils/*.c)
 
 SRC_COM	=   $(shell ls ./comand/*.c) 
 
-SRC_HELP = $(shell ls ./sort_help/*.c)
+SRC_HELP = $(shell ls ./sort/*.c)
 
 SRCS		=  $(SRC_UTL)  $(SRC_COM) $(SRC_HELP) $(shell ls ./*.c) 
 
