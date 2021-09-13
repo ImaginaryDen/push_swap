@@ -5,7 +5,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-#define PRINT_ALL 0
+#define PRINT_ALL 1
 
 enum e_game_rules
 {

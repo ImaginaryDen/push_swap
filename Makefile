@@ -17,7 +17,7 @@ CC		=   gcc
 
 OBG		=	$(SRCS:%.c=%.o)
 
-ARG		=	$(shell ruby -e "puts (1..100).to_a.shuffle.join(' ')")
+ARG		=	$(shell ruby -e "puts (1..5).to_a.shuffle.join(' ')")
 
 all:		$(NAME)
 
