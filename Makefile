@@ -5,7 +5,9 @@ SRC_UTL = $(shell ls ./utils/*.c)
 
 SRC_COM	=   $(shell ls ./comand/*.c) 
 
-SRCS		=  $(SRC_UTL)  $(SRC_COM) $(shell ls ./*.c) 
+SRC_HELP = $(shell ls ./sort_help/*.c)
+
+SRCS		=  $(SRC_UTL)  $(SRC_COM) $(SRC_HELP) $(shell ls ./*.c) 
 
 CFLAGS	= -Wall -Wextra -Werror
 

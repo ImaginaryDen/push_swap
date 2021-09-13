@@ -3,46 +3,40 @@
 
 void    ft_del_next(t_stack **stack)
 {
-    t_stack *temp;
+	t_stack *temp;
 
-    temp = (*stack)->next;
-    (*stack)->next = (*stack)->next->next;
-    free(temp);
+	temp = (*stack)->next;
+	(*stack)->next = (*stack)->next->next;
+	free(temp);
 }
 
-void    ft_command_cheker(t_stack **command)
+void    ft_command_cheker(t_stack *com)
 {
-    t_stack *temp;
-
-    temp = *command;
-    while (temp->next)
-    {
-        if ((temp->item == SA && temp->next->item == SB) || (temp->item == SB && temp->next->item == SA))
-        {
-            temp->item = SS;
-            ft_del_next(&temp);
-            continue;
-        }
-        if ((temp->item == RA && temp->next->item  == RB) || (temp->item == RB && temp->next->item == RA))
-        {
-            temp->item = RR;
-            ft_del_next(&temp);
-            continue;
-        }
-        if ((temp->item == RRA && temp->next->item  == RRB) || (temp->item == RRB && temp->next->item == RRA))
-        {
-            temp->item = RRR;
-            ft_del_next(&temp);
-            continue;
-        }
-        if  (temp->next->next != NULL &&
-            ((temp->next->item == PA && temp->next->next->item  == PB) 
-            || (temp->next->item == PB && temp->next->next->item == PA)))
-        {
-            ft_del_next(&temp);
-            ft_del_next(&temp);
-            continue;
-        }
-        temp = temp->next;
-    }
+	while (com->next)
+	{
+		if ((com->item == SA && com->next->item == SB) || (com->item == SB && com->next->item == SA))
+		{
+			com->item = SS;
+			ft_del_next(&com);
+		}
+		if ((com->item == RA && com->next->item  == RB) || (com->item == RB && com->next->item == RA))
+		{
+			com->item = RR;
+			ft_del_next(&com);
+		}
+		if ((com->item == RRA && com->next->item  == RRB) || (com->item == RRB && com->next->item == RRA))
+		{
+			com->item = RRR;
+			ft_del_next(&com);
+		}
+		if  (com->next->next != NULL &&
+			((com->next->item == PA && com->next->next->item  == PB) 
+			|| (com->next->item == PB && com->next->next->item == PA)))
+		{
+			ft_del_next(&com);
+			ft_del_next(&com);
+			continue;
+		}
+		com = com->next;
+	}
 }

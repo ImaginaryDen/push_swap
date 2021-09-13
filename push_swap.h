@@ -5,7 +5,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-#define PRINT_ALL 0
+#define PRINT_ALL 1
 
 enum e_game_rules
 {
@@ -72,6 +72,16 @@ size_t		ft_strlen(const char *s);
 int			ft_check(t_stack *a, t_stack *com);
 void		ft_sort(t_stack *stack);
 void		ft_sort_stack(t_stack **a, t_stack **comands);
-void		ft_command_cheker(t_stack **command);
+void		ft_command_cheker(t_stack *commands);
+int			check_first(t_stack *stack, int next);
+int			check_second(t_stack *stack, int next);
+int			check_last(t_for_sort	*sort_info);
+int			check_two_first(t_for_sort *sort_info);
+int			check_next(t_for_sort *info);
+int			less(t_stack *a, int b);
+int			larger(t_stack *a, int b);
+void		div_stack(t_for_sort *s_i, t_stack **out, int (*compare)(t_stack *, int));
+void		rev_stack(t_for_sort *info, int order);
+int			ft_is_sort(t_stack *a);
 
 #endif
