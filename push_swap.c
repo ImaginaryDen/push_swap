@@ -54,15 +54,45 @@ void print_commands(t_stack *commands)
 	}
 }
 
+void find_solve(t_stack **commands, t_stack *stack)
+{
+	t_stack *copy_stack;
+	int	min;
+	int	magic_min;
+	int	i;
+	int	size;
+
+	i = 1;
+	min = 0;
+	while (i < 15)
+	{
+		copy_stack = ft_copy_list(stack);
+		ft_sort_stack(&copy_stack, commands, i);
+		ft_command_cheker(*commands);
+		size = ft_lstsize(*commands);
+		if (!min || min > size)
+		{
+			min = size;
+			magic_min = i;
+		}
+		ft_lstclear(&copy_stack);
+		ft_lstclear(commands);
+		i++;
+	}
+	copy_stack = ft_copy_list(stack);
+	ft_sort_stack(&copy_stack, commands, magic_min);
+	ft_command_cheker(*commands);
+	ft_lstclear(&copy_stack);
+}
+
 int main(int argc, char **argv)
 {
 	int		num;
 	t_stack *stack;
-	t_stack *copy_stack;
-	t_stack *comands;
+	t_stack *commands;
 
 	stack = NULL;
-	comands = NULL;
+	commands = NULL;
 	if (argc < 2)
 		return (exit_error(&stack));
 	while (--argc)
@@ -70,14 +100,12 @@ int main(int argc, char **argv)
 			return (exit_error(&stack));
 		else
 			ft_lstadd_front(&stack, ft_lstnew(num));
-	if (ft_is_sort(stack))
+	if (ft_is_sort(stack, NULL))
 		return (exit_error(&stack));
-	copy_stack = ft_copy_list(stack);
-	ft_sort_stack(&stack, &comands);
+	find_solve(&commands, stack);
+	print_commands(commands);
+	ft_check(&stack, commands);
 	ft_lstclear(&stack);
-	print_commands(comands);
-	ft_check(copy_stack, comands);
-	ft_lstclear(&copy_stack);
-	ft_lstclear(&comands);
+	ft_lstclear(&commands);
 	return(0);
 }

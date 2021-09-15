@@ -23,5 +23,13 @@ void	ft_print_stack(t_stack *a, t_stack *b)
 		}
 		ft_putchar_fd('\n', 1);
 	}
-	ft_putstr_fd("--------\n", 1);
+}
+
+void print_line(char ch, int i)
+{
+	while(i)
+	{
+		ft_putchar_fd(ch, 1);
+		i--;
+	}
 }

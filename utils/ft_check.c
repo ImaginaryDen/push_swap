@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-int ft_is_sort(t_stack *a)
+int ft_is_sort(t_stack *a, t_stack *b)
 {
 	while (a->next)
 	{
-		if (a->item > a->next->item)
+		if (a->item > a->next->item || b != NULL)
 			return(0);
 		a = a->next;
 	}
@@ -20,10 +20,10 @@ void print_info(t_stack *a, t_stack *b, int com)
 	ft_putstr_fd((char *)name[com], 1);
 	ft_putchar_fd('\n', 1);
 	ft_print_stack(a, b);
-	ft_putstr_fd("----------\n", 1);
+	ft_putstr_fd("~~~~~~~~~\n", 1);
 }
 
-int ft_check(t_stack *a, t_stack *com)
+int ft_check(t_stack **a, t_stack *com)
 {
 	t_stack		*b;
 	int			size;
@@ -34,14 +34,12 @@ int ft_check(t_stack *a, t_stack *com)
 	b = NULL;
 	while (com != NULL)
 	{
-		all_funcs[com->item](&a, &b);
-		if (PRINT_ALL)
-			print_info(a, b, com->item);
+		all_funcs[com->item](a, &b);
 		com = com->next;
 	}
 	ft_putnbr_fd(size, 1);
 	ft_putchar_fd('\n', 1);
-	if (ft_is_sort(a))
+	if (ft_is_sort(*a, b))
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);

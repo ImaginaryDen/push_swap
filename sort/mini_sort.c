@@ -32,7 +32,7 @@ void sort_three_b(t_stack **stack, t_stack **commands)
 {
 	int min;
 
-	if (ft_is_sort(*stack))
+	if (ft_is_sort(*stack, NULL))
 		return ;
 	if (ft_lstsize(*stack) == 2)
 	{
@@ -63,9 +63,9 @@ void sort_three(t_stack **stack, t_stack **commands)
 {
 	int min;
 
-	if (ft_is_sort(*stack))
+	if (ft_is_sort(*stack, NULL))
 		return ;
-	if (ft_lstsize(*stack) == 2 && ft_is_sort(*stack))
+	if (ft_lstsize(*stack) == 2 && ft_is_sort(*stack, NULL))
 	{
 		ft_lstadd_back(commands, ft_lstnew(sa(stack, NULL)));
 		return ;

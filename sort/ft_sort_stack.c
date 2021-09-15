@@ -29,6 +29,7 @@ void	info_init(t_sort_info *info, t_stack **a, t_stack ** commands)
 {
 	info->size  = ft_lstsize(*a);
 	info->next = 1;
+	info->mid = 0;
 	info->a = a;
 	info->b = NULL;
 	info->command = commands;
@@ -40,21 +41,27 @@ void	info_init(t_sort_info *info, t_stack **a, t_stack ** commands)
 void	flag_div(t_sort_info *info)
 {
 	int			flag_now;
+	t_stack		*temp;
 
 	flag_now = (*info->a)->flag;
-	info->max = 0;
 	while ((*info->a)->flag > 0 && (*info->a)->flag == flag_now)
 	{
-		if ((*info->a)->order > info->max)
-			info->max = (*info->a)->order;
 		ft_lstadd_back(info->command, ft_lstnew(pb(info->a, &info->b)));
 		check_next(info);
 		if (info->b == NULL)
 			flag_now = (*info->a)->flag;
 	}
+	temp = info->b;
+	info->max = 0;
+	while (temp)
+	{
+		if (temp->order > info->max)
+			info->max = temp->order;
+		temp = temp->next;
+	}
 }
 
-void	ft_sort_stack(t_stack **a, t_stack **commands)
+void	ft_sort_stack(t_stack **a, t_stack **commands, int magic_num)
 {
 	t_sort_info	info;
 
@@ -68,7 +75,10 @@ void	ft_sort_stack(t_stack **a, t_stack **commands)
 	while ((*info.a)->flag != -1 )
 	{
 		info.max = info.size;
-		info.mid = ((info.max - info.next) / 2) + info.next;
+		if (info.mid)
+			info.mid = ((info.max - info.next) / 2) + info.next;
+		else
+			info.mid = (info.max / 2) + magic_num;
 		div_stack(&info, info.a, less);
 		info.max = info.mid;
 		is_sort(&info);
@@ -82,7 +92,7 @@ void	ft_sort_stack(t_stack **a, t_stack **commands)
 			if (info.b == NULL)
 				flag_div(&info);
 		}
+
 	}
 	ft_lstclear(&info.b);
-	ft_command_cheker(*commands);
 }
