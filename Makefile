@@ -17,7 +17,9 @@ CC		=   gcc
 
 OBG		=	$(SRCS:%.c=%.o)
 
-ARG		=	$(shell ruby -e "puts (1..500).to_a.shuffle.join(' ')")
+ARG		=	$(shell ruby -e "puts (1..100).to_a.shuffle.join(' ')")
+
+ARG_STATIC = $(shell cat arg.txt)
 
 all:		$(NAME)
 
@@ -36,6 +38,7 @@ fclean:		clean
 re:			fclean all
 
 test:		
-			make -s  && ./push_swap $(ARG)
+			make -s && ./push_swap $(ARG)
+
 
 .PHONY: clean fclean re all

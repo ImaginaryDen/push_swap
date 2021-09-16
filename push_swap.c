@@ -1,19 +1,6 @@
 #include "push_swap.h"
 
-t_stack *ft_copy_list(t_stack *stack)
-{
-	t_stack *copy_stack;
-
-	copy_stack = NULL;
-	while (stack)
-	{
-		ft_lstadd_back(&copy_stack, ft_lstnew(stack->item));
-		stack = stack->next;
-	}
-	return copy_stack;
-}
-
-int exit_error(t_stack **a)
+int		exit_error(t_stack **a)
 {
 	ft_lstclear(a);
 	ft_putstr_fd("ERROR\n", 1);
@@ -23,6 +10,8 @@ int exit_error(t_stack **a)
 int check_arg(char *arg, t_stack *a, int *num)
 {
 	*num = 0;
+	while (arg[*num] == '-' || arg[*num] == '+' )
+		(*num)++;
 	while (arg[*num])
 	{
 		if (!ft_isdigit(arg[*num]))
@@ -66,7 +55,7 @@ void find_solve(t_stack **commands, t_stack *stack)
 	min = 0;
 	while (i < 15)
 	{
-		copy_stack = ft_copy_list(stack);
+		copy_stack = ft_lstcopy(stack);
 		ft_sort_stack(&copy_stack, commands, i);
 		ft_command_cheker(*commands);
 		size = ft_lstsize(*commands);
@@ -79,7 +68,7 @@ void find_solve(t_stack **commands, t_stack *stack)
 		ft_lstclear(commands);
 		i++;
 	}
-	copy_stack = ft_copy_list(stack);
+	copy_stack = ft_lstcopy(stack);
 	ft_sort_stack(&copy_stack, commands, magic_min);
 	ft_command_cheker(*commands);
 	ft_lstclear(&copy_stack);
@@ -104,7 +93,7 @@ int main(int argc, char **argv)
 		return (exit_error(&stack));
 	find_solve(&commands, stack);
 	print_commands(commands);
-	ft_check(&stack, commands);
+	/*ft_check(&stack, commands);*/
 	ft_lstclear(&stack);
 	ft_lstclear(&commands);
 	return(0);

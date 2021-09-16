@@ -92,7 +92,6 @@ void	ft_sort_stack(t_stack **a, t_stack **commands, int magic_num)
 			if (info.b == NULL)
 				flag_div(&info);
 		}
-
 	}
 	ft_lstclear(&info.b);
 }

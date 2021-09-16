@@ -35,35 +35,35 @@ int check_two_first(t_sort_info *info)
 		check_second(info->b, info->next));
 }
 
-int check_next(t_sort_info *info)
+int check_next(t_sort_info *inf)
 {
 	int	change;
 
 	change = 0;
-	if (ft_lstsize(info->b) > 4 && ft_lstlast(info->b)->order == info->next)
-		ft_lstadd_back(info->command, ft_lstnew(rrb(info->a, &info->b)));
-	while(check_two_first(info))
+	if (ft_lstsize(inf->b) > 4 && ft_lstlast(inf->b)->order == inf->next)
+		ft_lstadd_back(inf->command, ft_lstnew(rrb(inf->a, &inf->b)));
+	while(check_two_first(inf))
 	{
 		change = 1;
-		if (check_second(info->b, info->next))
+		if (check_second(inf->b, inf->next))
 		{
-			if (check_first(info->b, info->next + 1))
-				ft_lstadd_back(info->command, ft_lstnew(pa(info->a, &info->b)));
+			if (check_first(inf->b, inf->next + 1))
+				ft_lstadd_back(inf->command, ft_lstnew(pa(inf->a, &inf->b)));
 			else
-				ft_lstadd_back(info->command, ft_lstnew(sb(info->a, &info->b)));
+				ft_lstadd_back(inf->command, ft_lstnew(sb(inf->a, &inf->b)));
 		}
-		while (check_first(*info->a, info->next))
+		while (check_first(*inf->a, inf->next))
 		{
-			(*info->a)->flag = -1;
-			ft_lstadd_back(info->command, ft_lstnew(ra(info->a, &info->b)));
-			info->next++;
+			(*inf->a)->flag = -1;
+			ft_lstadd_back(inf->command, ft_lstnew(ra(inf->a, &inf->b)));
+			inf->next++;
 		}
-		while (check_first(info->b, info->next))
+		while (check_first(inf->b, inf->next))
 		{
-			info->b->flag = -1;
-			ft_lstadd_back(info->command, ft_lstnew(pa(info->a, &info->b)));
-			ft_lstadd_back(info->command, ft_lstnew(ra(info->a, &info->b)));
-			info->next++;
+			inf->b->flag = -1;
+			ft_lstadd_back(inf->command, ft_lstnew(pa(inf->a, &inf->b)));
+			ft_lstadd_back(inf->command, ft_lstnew(ra(inf->a, &inf->b)));
+			inf->next++;
 		}
 	}
 	return (change);

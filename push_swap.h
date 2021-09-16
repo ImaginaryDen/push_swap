@@ -85,5 +85,6 @@ void		rev_stack(t_sort_info *info, int order);
 int			ft_is_sort(t_stack *a, t_stack *b);
 void		mini_sort(t_stack **a,  t_stack **commands);
 void		print_line_stack(t_stack *a, t_stack *b);
+t_stack		*ft_lstcopy(t_stack *stack);
 
 #endif
