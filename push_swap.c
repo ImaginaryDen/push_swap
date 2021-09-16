@@ -50,10 +50,14 @@ void find_solve(t_stack **commands, t_stack *stack)
 	int	magic_min;
 	int	i;
 	int	size;
+	int	max_check;
 
 	i = 1;
 	min = 0;
-	while (i < 15)
+	max_check = 15;
+	if (ft_lstsize(stack) < 100)
+		max_check = 2;
+	while (i < max_check)
 	{
 		copy_stack = ft_lstcopy(stack);
 		ft_sort_stack(&copy_stack, commands, i);
@@ -93,7 +97,7 @@ int main(int argc, char **argv)
 		return (exit_error(&stack));
 	find_solve(&commands, stack);
 	print_commands(commands);
-	/*ft_check(&stack, commands);*/
+	ft_check(&stack, commands);
 	ft_lstclear(&stack);
 	ft_lstclear(&commands);
 	return(0);

@@ -40,7 +40,7 @@ int check_next(t_sort_info *inf)
 	int	change;
 
 	change = 0;
-	if (ft_lstsize(inf->b) > 4 && ft_lstlast(inf->b)->order == inf->next)
+	if (inf->b != NULL && ft_lstsize(inf->b) > 4 && ft_lstlast(inf->b)->order == inf->next)
 		ft_lstadd_back(inf->command, ft_lstnew(rrb(inf->a, &inf->b)));
 	while(check_two_first(inf))
 	{
