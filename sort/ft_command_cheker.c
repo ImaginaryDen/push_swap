@@ -1,7 +1,6 @@
 #include "push_swap.h"
 
-
-void    ft_del_next(t_stack **stack)
+void	ft_del_next(t_stack **stack)
 {
 	t_stack *temp;
 
@@ -10,21 +9,21 @@ void    ft_del_next(t_stack **stack)
 	free(temp);
 }
 
-void    ft_command_cheker(t_stack *com)
+void	ft_command_cheker(t_stack *com)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = com;
 	while (com->next)
 	{
-		if  (com->next->next != NULL &&
-			((com->next->item == PA && com->next->next->item  == PB) 
-			|| (com->next->item == PB && com->next->next->item == PA)))
+		if (com->next->next != NULL
+			&& ((com->next->item == PA && com->next->next->item == PB)
+				|| (com->next->item == PB && com->next->next->item == PA)))
 		{
 			ft_del_next(&com);
 			ft_del_next(&com);
 			com = temp;
-			continue;
+			continue ;
 		}
 		if ((com->item == SA && com->next->item == SB) || (com->item == SB && com->next->item == SA))
 		{

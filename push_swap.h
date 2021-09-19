@@ -5,7 +5,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-#define PRINT_ALL 0
+# define PRINT_ALL 0
 
 enum e_game_rules
 {
@@ -32,14 +32,14 @@ typedef struct s_stack
 
 typedef struct s_sort_info
 {
-	int	size;
-	int	mid;
-	int	max;
-	int	next;
-	int	flag;
-	t_stack **a;
-	t_stack *b;
-	t_stack **command;
+	int		size;
+	int		mid;
+	int		max;
+	int		next;
+	int		flag;
+	t_stack	**a;
+	t_stack	*b;
+	t_stack	**command;
 }				t_sort_info;
 
 void		ft_lstadd_back(t_stack	**lst, t_stack	*new);
@@ -80,13 +80,21 @@ int			check_two_first(t_sort_info *sort_info);
 int			check_next(t_sort_info *info);
 int			less(t_stack *a, int b);
 int			larger(t_stack *a, int b);
-void		div_stack(t_sort_info *s_i, t_stack **out, int (*compare)(t_stack *, int));
+void		div_stack(t_sort_info *s_i, t_stack **out,
+				int (*compare)(t_stack *, int));
 void		rev_stack(t_sort_info *info, int order);
 int			ft_is_sort(t_stack *a, t_stack *b);
-void		mini_sort(t_stack **a,  t_stack **commands);
+void		mini_sort(t_stack **a, t_stack **commands);
 void		print_line_stack(t_stack *a, t_stack *b);
 t_stack		*ft_lstcopy(t_stack *stack);
 int			check_arg(char *arg, t_stack *a, int *num);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+void		*ft_memset(void *destination, int c, size_t n);
+int			get_max(t_stack *stack);
+int			get_min(t_stack *stack);
+int			check_first(t_stack *stack, int next);
+int			check_second(t_stack *stack, int next);
+int			check_last(t_sort_info	*info);
+int			check_two_first(t_sort_info *info);
 
 #endif

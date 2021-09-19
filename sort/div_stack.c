@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-int		if_there_is(t_stack *stack,  int mid, int (*compare)(t_stack *, int))
+int	if_there_is(t_stack *stack, int mid, int (*compare)(t_stack *, int))
 {
-	while(stack)
+	while (stack)
 	{
 		if (compare(stack, mid))
 			return (1);
@@ -11,12 +11,13 @@ int		if_there_is(t_stack *stack,  int mid, int (*compare)(t_stack *, int))
 	return (0);
 }
 
-void	div_stack(t_sort_info *inf, t_stack **out, int (*compare)(t_stack *, int))
+void	div_stack(t_sort_info *inf, t_stack **out,
+	int (*compare)(t_stack *, int))
 {
-	while(if_there_is(*out, inf->mid, compare))
+	while (if_there_is(*out, inf->mid, compare))
 	{
 		if (*out == inf->b && check_next(inf))
-			continue;
+			continue ;
 		while (!compare((*out), inf->mid))
 		{
 			if (out == inf->a)
@@ -27,7 +28,7 @@ void	div_stack(t_sort_info *inf, t_stack **out, int (*compare)(t_stack *, int))
 		if (out == inf->a)
 		{
 			ft_lstadd_back(inf->command, ft_lstnew(pb(inf->a, &inf->b)));
-			continue;
+			continue ;
 		}
 		inf->b->flag = inf->flag;
 		ft_lstadd_back(inf->command, ft_lstnew(pa(inf->a, &inf->b)));
