@@ -86,5 +86,7 @@ int			ft_is_sort(t_stack *a, t_stack *b);
 void		mini_sort(t_stack **a,  t_stack **commands);
 void		print_line_stack(t_stack *a, t_stack *b);
 t_stack		*ft_lstcopy(t_stack *stack);
+int			check_arg(char *arg, t_stack *a, int *num);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

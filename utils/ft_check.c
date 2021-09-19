@@ -26,18 +26,19 @@ void print_info(t_stack *a, t_stack *b, int com)
 int ft_check(t_stack **a, t_stack *com)
 {
 	t_stack		*b;
-	int			size;
+	//int			size;
 	int			(*const all_funcs[11])(t_stack	**,	t_stack	**) =
 		{sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 
-	size = ft_lstsize(com);
+	//size = ft_lstsize(com);
 	b = NULL;
 	while (com != NULL)
 	{
 		all_funcs[com->item](a, &b);
+		//print_info(*a, b, com->item);
 		com = com->next;
 	}
-	ft_putnbr_fd(size, 1);
+	//ft_putnbr_fd(size, 1);
 	ft_putchar_fd('\n', 1);
 	if (ft_is_sort(*a, b))
 		ft_putstr_fd("OK\n", 1);

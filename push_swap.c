@@ -3,30 +3,7 @@
 int		exit_error(t_stack **a)
 {
 	ft_lstclear(a);
-	ft_putstr_fd("ERROR\n", 1);
-	return (1);
-}
-
-int check_arg(char *arg, t_stack *a, int *num)
-{
-	*num = 0;
-	while (arg[*num] == '-' || arg[*num] == '+' )
-		(*num)++;
-	while (arg[*num])
-	{
-		if (!ft_isdigit(arg[*num]))
-			return (0);
-		(*num)++;
-	}
-	*num = ft_atoi(arg);
-	if ((*num == -1 && arg[2] != '\0') || (*num == 0 && arg[1] != '\0'))
-		return (0);  
-	while (a)
-	{
-		if (*num == a->item)
-			return (0);
-		a = a->next;
-	}
+	ft_putstr_fd("Error\n", 1);
 	return (1);
 }
 
@@ -97,7 +74,7 @@ int main(int argc, char **argv)
 		return (exit_error(&stack));
 	find_solve(&commands, stack);
 	print_commands(commands);
-	ft_check(&stack, commands);
+	//ft_check(&stack, commands);
 	ft_lstclear(&stack);
 	ft_lstclear(&commands);
 	return(0);
