@@ -16,7 +16,7 @@ CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 CC		=   gcc
 
-ARG		=	$(shell ruby -e "puts (1..100).to_a.shuffle.join(' ')")
+ARG		=	$(shell ruby -e "puts (1..500).to_a.shuffle.join(' ')")
 
 all:		$(NAME) $(NAME_BONUS)
 

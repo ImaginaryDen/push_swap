@@ -28,7 +28,7 @@ int	find_min_magic(t_stack *stack, t_stack **commands)
 	int		max_check;
 
 	max_check = 15;
-	if (ft_lstsize(stack) < 100)
+	if (ft_lstsize(stack) < 90)
 		max_check = 2;
 	while (max_check)
 	{

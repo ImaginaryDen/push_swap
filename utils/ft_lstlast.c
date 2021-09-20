@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_stack 	*ft_lstlast(t_stack  *last)
+t_stack	*ft_lstlast(t_stack *last)
 {
 	if (!last)
 		return (NULL);

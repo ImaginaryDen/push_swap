@@ -1,11 +1,15 @@
 #include "push_swap.h"
 
-void	push_next(t_sort_info *inf)
+void	push_next(t_sort_info *inf, int flag)
 {
 	if (check_second(inf->b, inf->next))
 	{
-		if (check_first(inf->b, inf->next + 1))
+		if (check_first(inf->b, inf->next + 1)
+			|| (flag && inf->mid < inf->b->order))
+		{
+			inf->b->flag = inf->flag;
 			ft_lstadd_back(inf->command, ft_lstnew(pa(inf->a, &inf->b)));
+		}
 		else
 			ft_lstadd_back(inf->command, ft_lstnew(sb(inf->a, &inf->b)));
 	}
@@ -24,7 +28,7 @@ void	push_next(t_sort_info *inf)
 	}
 }
 
-int	check_next(t_sort_info *inf)
+int	check_next(t_sort_info *inf, int flag)
 {
 	int	change;
 
@@ -35,7 +39,7 @@ int	check_next(t_sort_info *inf)
 	while (check_two_first(inf))
 	{
 		change = 1;
-		push_next(inf);
+		push_next(inf, flag);
 	}
 	return (change);
 }

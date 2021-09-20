@@ -2,7 +2,7 @@
 
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	t_stack *last;
+	t_stack	*last;
 
 	if (!lst)
 		return ;

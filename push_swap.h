@@ -77,7 +77,7 @@ int			check_first(t_stack *stack, int next);
 int			check_second(t_stack *stack, int next);
 int			check_last(t_sort_info	*sort_info);
 int			check_two_first(t_sort_info *sort_info);
-int			check_next(t_sort_info *info);
+int			check_next(t_sort_info *info, int flag);
 int			less(t_stack *a, int b);
 int			larger(t_stack *a, int b);
 void		div_stack(t_sort_info *s_i, t_stack **out,
@@ -96,5 +96,6 @@ int			check_first(t_stack *stack, int next);
 int			check_second(t_stack *stack, int next);
 int			check_last(t_sort_info	*info);
 int			check_two_first(t_sort_info *info);
+void		push_next(t_sort_info *inf, int flag);
 
 #endif

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_lstsize(t_stack  *lst)
+int	ft_lstsize(t_stack *lst)
 {
 	if (!lst)
 		return (0);

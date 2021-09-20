@@ -10,5 +10,5 @@ t_stack	*ft_lstcopy(t_stack *stack)
 		ft_lstadd_back(&copy_stack, ft_lstnew(stack->item));
 		stack = stack->next;
 	}
-	return copy_stack;
+	return (copy_stack);
 }

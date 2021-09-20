@@ -2,11 +2,15 @@
 
 int	less(t_stack *a, int b)
 {
+	if (a == NULL)
+		return (0);
 	return (a->order <= b && a->flag != -1);
 }
 
 int	larger(t_stack *a, int b)
 {
+	if (a == NULL)
+		return (0);
 	return (a->order >= b);
 }
 

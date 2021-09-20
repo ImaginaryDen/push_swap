@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-t_stack 	*ft_lstmap(t_stack  *lst, int (*f)(int))
+t_stack	*ft_lstmap(t_stack *lst, int (*f)(int))
 {
-	t_stack 	*new_lst;
-	t_stack 	*new_el;
+	t_stack	*new_lst;
+	t_stack	*new_el;
 
 	new_lst = NULL;
 	while (lst)

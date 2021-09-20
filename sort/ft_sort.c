@@ -2,7 +2,7 @@
 
 void	swap(int *a, int *b)
 {
-	int temp;
+	int	temp;
 
 	temp = *a;
 	*a = *b;
@@ -11,12 +11,12 @@ void	swap(int *a, int *b)
 
 void	ft_sort_choice(int *arr, int **link, int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	int	min;
 
 	i = 0;
-	while(i < size - 1)
+	while (i < size - 1)
 	{
 		min = i;
 		j = i + 1;
@@ -37,7 +37,7 @@ void	ft_sort(t_stack *stack)
 {
 	int		size;
 	int		i;
-	int 	*arr;
+	int		*arr;
 	int		**link;
 
 	size = ft_lstsize(stack);
@@ -52,7 +52,7 @@ void	ft_sort(t_stack *stack)
 		i++;
 	}
 	ft_sort_choice(arr, link, size);
-	while(i)
+	while (i)
 	{
 		*(link[i - 1]) = i;
 		i--;

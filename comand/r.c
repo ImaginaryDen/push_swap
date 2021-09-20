@@ -2,8 +2,8 @@
 
 void	r(t_stack **stack)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	temp = *stack;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
@@ -14,9 +14,9 @@ void	r(t_stack **stack)
 
 void	rev_r(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
-	if (*stack == NULL ||(*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	temp = *stack;
 	while (temp->next->next != NULL)
@@ -25,45 +25,24 @@ void	rev_r(t_stack **stack)
 	temp->next = NULL;
 }
 
-int		ra(t_stack **a, t_stack **b)
+int	ra(t_stack **a, t_stack **b)
 {
 	r(a);
 	(void)b;
 	return (RA);
 }
 
-int		rb(t_stack **a, t_stack **b)
+int	rb(t_stack **a, t_stack **b)
 {
 	r(b);
 	(void)a;
 	return (RB);
 }
 
-int		rr(t_stack **a, t_stack **b)
+int	rr(t_stack **a, t_stack **b)
 {
 	r(a);
 	r(b);
 	(void)a;
 	return (RR);
-}
-
-int		rra(t_stack **a, t_stack **b)
-{
-	rev_r(a);
-	(void)b;
-	return (RRA);
-}
-
-int		rrb(t_stack **a, t_stack **b)
-{
-	rev_r(b);
-	(void)a;
-	return (RRB);
-}
-
-int		rrr(t_stack **a, t_stack **b)
-{
-	rev_r(a);
-	rev_r(b);
-	return (RRR);
 }
