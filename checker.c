@@ -42,7 +42,6 @@ int	parse_commands_fd(t_stack	**command, int fd)
 			buf[i] = 0;
 			if (parse_command(buf) == -1)
 				return (0);
-			ft_putstr_fd("add\n", 5);
 			ft_lstadd_back(command, ft_lstnew(parse_command(buf)));
 			i = -1;
 			ft_memset(buf, 0, 4);
