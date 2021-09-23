@@ -14,33 +14,32 @@ OBG_BONUS		=	$(SRCS_BUNUS:%.c=%.o)
 
 CFLAGS	= -Wall -Wextra -Werror 
 RM		= rm -rf
-CC		=   gcc
+CC		= gcc
 
-ARG		=	$(shell ruby -e "puts (1..500).to_a.shuffle.join(' ')")
+ARG		=	$(shell ruby -e "puts (1..10).to_a.shuffle.join(' ')")
 
-all:		$(NAME) $(NAME_BONUS)
+all:			$(NAME) $(NAME_BONUS)
 
-$(NAME):	${OBG} $(HEADER)
-			$(CC) $(CFLAGS)  -o $(NAME) ${OBG}
+$(NAME):		${OBG} $(HEADER)
+				$(CC) $(CFLAGS)  -o $(NAME) ${OBG}
 
-bonus:		$(NAME_BONUS)
+bonus:			$(NAME_BONUS)
 
 $(NAME_BONUS):	${OBG_BONUS} $(HEADER)
 				$(CC) $(CFLAGS) -o $(NAME_BONUS) ${OBG_BONUS}
 
-%.o: 		%.c	
-			$(CC) $(CFLAGS) -I./ -c $< -o $@
- 
+%.o: 			%.c	
+				$(CC) $(CFLAGS) -I./ -c $< -o $@
+
 clean:
-			$(RM) ${OBG} ${OBG_BONUS}
+				$(RM) ${OBG} ${OBG_BONUS}
 
-fclean:		clean
-			$(RM) $(NAME) $(NAME_BONUS)
+fclean:			clean
+				$(RM) $(NAME) $(NAME_BONUS)
 
-re:			fclean all
+re:				fclean all
 
-test:		
-			make -s && ./push_swap $(ARG)
-
+test:
+				make -s && ./push_swap $(ARG)
 
 .PHONY: clean fclean re all bonus

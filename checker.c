@@ -24,6 +24,15 @@ int	parse_command(char *str)
 	return (-1);
 }
 
+int	clear_stdin(void)
+{
+	int	ch;
+
+	while (read(0, &ch, 1))
+		;
+	return (0);
+}
+
 int	parse_commands_fd(t_stack	**command, int fd)
 {
 	int			i;
@@ -36,7 +45,7 @@ int	parse_commands_fd(t_stack	**command, int fd)
 	{
 		ret = read(fd, buf + i, 1);
 		if (i == 5)
-			return (0);
+			return (clear_stdin());
 		if (*buf && (buf[i] == '\n' || ret == 0))
 		{
 			buf[i] = 0;
