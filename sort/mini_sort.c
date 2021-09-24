@@ -23,7 +23,7 @@ void	sort_three_b(t_stack **stack, t_stack **commands)
 	else
 	{
 		ft_lstadd_back(commands, ft_lstnew(sb(NULL, stack)));
-		ft_lstadd_back(commands, ft_lstnew(rrb(stack, NULL)));
+		ft_lstadd_back(commands, ft_lstnew(rrb(NULL, stack)));
 	}
 }
 

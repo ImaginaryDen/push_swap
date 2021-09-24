@@ -64,7 +64,7 @@ void	find_solve(t_stack **commands, t_stack *stack)
 	t_stack	*copy_stack;
 
 	copy_stack = ft_lstcopy(stack);
-	if (ft_lstsize(copy_stack) < 6)
+	if (ft_lstsize(copy_stack) <= 6)
 		mini_sort(&copy_stack, commands);
 	else
 		ft_sort_stack(&copy_stack, commands, find_min_magic(stack, commands));
