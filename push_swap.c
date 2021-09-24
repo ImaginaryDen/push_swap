@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	stack = NULL;
 	commands = NULL;
 	if (argc < 2)
-		return (exit_error(&stack, NULL, 0));
+		return (0);
 	if (pars_arg(argv + 1, argc - 1, &stack))
 	{
 		strs = ft_split(argv[1], ' ');
