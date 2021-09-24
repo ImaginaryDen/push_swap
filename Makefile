@@ -16,7 +16,7 @@ CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 CC		= gcc
 
-ARG		=	$(shell ruby -e "puts (1..10).to_a.shuffle.join(' ')")
+ARG		=	$(shell ruby -e "puts (1..500).to_a.shuffle.join(' ')")
 
 all:			$(NAME) $(NAME_BONUS)
 
@@ -40,6 +40,8 @@ fclean:			clean
 re:				fclean all
 
 test:
-				make -s && ./push_swap $(ARG)
+				touch arg.txt
+				echo "$(ARG)" > arg.txt
+				make -s && ./push_swap $(shell cat arg.txt) | ./checker $(shell cat arg.txt)
 
 .PHONY: clean fclean re all bonus

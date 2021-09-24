@@ -85,7 +85,7 @@ void	mini_sort(t_stack **a, t_stack **commands)
 		sort_three(a, commands);
 	if (b != NULL)
 	{
-		if (ft_lstsize(b) != 1 || ft_is_sort(b, NULL) != 1)
+		if (ft_lstsize(b) != 1 && ft_is_sort(b, NULL) != 1)
 			sort_three_b(&b, commands);
 		ft_merge(a, &b, commands);
 	}
