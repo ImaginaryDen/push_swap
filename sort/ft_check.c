@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+void	print_commands(t_stack *commands)
+{
+	const char	name[12][4] = {"sa", "sb", "ss", "pa", "pb",
+		"ra", "rb", "rr", "rra", "rrb", "rrr"};
+
+	while (commands)
+	{
+		ft_putstr_fd((char *)name[commands->item], 1);
+		ft_putstr_fd("\n", 1);
+		commands = commands->next;
+	}
+}
+
 int	ft_is_sort(t_stack *a, t_stack *b)
 {
 	while (a->next)

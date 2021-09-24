@@ -1,13 +1,5 @@
 #include "push_swap.h"
 
-int	exit_error(t_stack **a, t_stack **b)
-{
-	ft_lstclear(a);
-	ft_lstclear(b);
-	ft_putstr_fd("Error\n", 1);
-	return (1);
-}
-
 int	parse_command(char *str)
 {
 	int			i;
@@ -74,12 +66,12 @@ int	main(int argc, char **argv)
 	while (--argc)
 	{
 		if (!check_arg(argv[argc], stack, &num))
-			return (exit_error(&stack, &commands));
+			return (exit_error(&stack, &commands, 1));
 		else
 			ft_lstadd_front(&stack, ft_lstnew(num));
 	}
 	if (!parse_commands_fd(&commands, 0))
-		return (exit_error(&stack, &commands));
+		return (exit_error(&stack, &commands, 1));
 	ft_check(&stack, commands);
 	ft_lstclear(&stack);
 	ft_lstclear(&commands);

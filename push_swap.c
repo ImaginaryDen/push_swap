@@ -1,22 +1,33 @@
 #include "push_swap.h"
 
-int	exit_error(t_stack **a)
+int	pars_arg(char **argv, int argc, t_stack **stack)
 {
-	ft_lstclear(a);
-	return (1);
+	int	num;
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (!check_arg(argv[i], *stack, &num))
+			return (1);
+		else
+			ft_lstadd_back(stack, ft_lstnew(num));
+		i++;
+	}
+	return (0);
 }
 
-void	print_commands(t_stack *commands)
+void	ft_free_dabl_arr(char **strs)
 {
-	const char	name[12][4] = {"sa", "sb", "ss", "pa", "pb",
-		"ra", "rb", "rr", "rra", "rrb", "rrr"};
+	int	i;
 
-	while (commands)
+	i = 0;
+	while (strs + i && strs[i])
 	{
-		ft_putstr_fd((char *)name[commands->item], 1);
-		ft_putstr_fd("\n", 1);
-		commands = commands->next;
+		free(strs[i]);
+		i++;
 	}
+	free(strs);
 }
 
 int	find_min_magic(t_stack *stack, t_stack **commands)
@@ -63,23 +74,25 @@ void	find_solve(t_stack **commands, t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	int		num;
+	int		ret;
+	char	**strs;
 	t_stack	*stack;
 	t_stack	*commands;
 
 	stack = NULL;
 	commands = NULL;
 	if (argc < 2)
-		return (exit_error(&stack));
-	while (--argc)
+		return (exit_error(&stack, NULL, 0));
+	if (pars_arg(argv + 1, argc - 1, &stack))
 	{
-		if (!check_arg(argv[argc], stack, &num))
-			return (exit_error(&stack));
-		else
-			ft_lstadd_front(&stack, ft_lstnew(num));
+		strs = ft_split(argv[1], ' ');
+		ret = pars_arg(strs, get_size_str(strs), &stack);
+		ft_free_dabl_arr(strs);
+		if (ret)
+			return (exit_error(&stack, NULL, 1));
 	}
 	if (ft_is_sort(stack, NULL))
-		return (exit_error(&stack));
+		return (exit_error(&stack, NULL, 0));
 	find_solve(&commands, stack);
 	print_commands(commands);
 	ft_lstclear(&stack);
