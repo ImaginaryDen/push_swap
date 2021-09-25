@@ -55,20 +55,22 @@ int	parse_commands_fd(t_stack	**command, int fd)
 
 int	main(int argc, char **argv)
 {
+	char	**strs;
 	t_stack	*stack;
 	t_stack	*commands;
-	int		num;
+	int		ret;
 
 	if (argc < 2)
-		return (1);
+		return (0);
 	stack = NULL;
 	commands = NULL;
-	while (--argc)
+	if (pars_arg(argv + 1, argc - 1, &stack))
 	{
-		if (!check_arg(argv[argc], stack, &num))
-			return (exit_error(&stack, &commands, 1));
-		else
-			ft_lstadd_front(&stack, ft_lstnew(num));
+		strs = ft_split(argv[1], ' ');
+		ret = pars_arg(strs, get_size_str(strs), &stack);
+		ft_free_dabl_arr(strs);
+		if (ret)
+			return (exit_error(&stack, NULL, 1));
 	}
 	if (!parse_commands_fd(&commands, 0))
 		return (exit_error(&stack, &commands, 1));

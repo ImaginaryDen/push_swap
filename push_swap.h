@@ -102,5 +102,7 @@ char	**ft_split(char const *s, char c);
 size_t	get_size_str(char **str);
 void	print_commands(t_stack *commands);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		pars_arg(char **argv, int argc, t_stack **stack);
+void	ft_free_dabl_arr(char **strs);
 
 #endif
