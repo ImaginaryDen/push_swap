@@ -20,7 +20,7 @@ int	clear_stdin(void)
 {
 	int	ch;
 
-	while (read(0, &ch, 1))
+	while (read(0, &ch, 1) && ch != '\n')
 		;
 	return (0);
 }
@@ -36,7 +36,7 @@ int	parse_commands_fd(t_stack	**command, int fd)
 	while (1)
 	{
 		ret = read(fd, buf + i, 1);
-		if (i == 5)
+		if (i >= 4)
 			return (clear_stdin());
 		if (*buf && (buf[i] == '\n' || ret == 0))
 		{
